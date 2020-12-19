@@ -1,10 +1,15 @@
 ## Module 1 DevOps Introduction
 
-### TASK 1.1 (Git)
+## TASK 1.1 (Git)
 
 ### DevOps is ...
 
-#### Git commands used
+DevOps is a methodology which breaks the gap between development and operations. It allows continuous deployment and delivery of a product.
+It is archived via automatization of builds, infrastructure deployment, testing and publishing.
+DevOps works close with developers and ensures that may change how product is deployed can be implemented without delays.
+
+
+### Git commands used
 
 * `git config` to setup username, email and core editor
 
@@ -23,8 +28,9 @@
 
 ![new brach and checkout](images/scr_branch.png)
 
-  *This can be done in one command: `git checkout -b <branch_name>`*
-![one command to branch and checkout](images/scr_check.png)
+  * *This can be done in one command:* `git checkout -b <branch_name>` 
+  
+  ![one command to branch and checkout](images/scr_check.png)
 
 * `git merge <branch1>` to merge branch1 into a current branch, **need to provide a message with `-m` option if files from current branch to be changed** 
 
