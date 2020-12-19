@@ -1,0 +1,15 @@
+938d73d HEAD@{0}: merge develop: Fast-forward
+dd07fa2 HEAD@{1}: checkout: moving from develop to main
+938d73d HEAD@{2}: merge styles: Merge made by the 'recursive' strategy.
+5177c20 HEAD@{3}: merge images: Fast-forward
+8b409c0 HEAD@{4}: checkout: moving from styles to develop
+48edb1a HEAD@{5}: commit: changed html
+007a753 HEAD@{6}: commit: added styles
+8b409c0 HEAD@{7}: checkout: moving from develop to styles
+8b409c0 HEAD@{8}: checkout: moving from images to develop
+5177c20 HEAD@{9}: commit: added images
+8b409c0 HEAD@{10}: checkout: moving from develop to images
+8b409c0 HEAD@{11}: commit: added index.html
+dd07fa2 HEAD@{12}: checkout: moving from main to develop
+dd07fa2 HEAD@{13}: commit: init commit
+05a0b70 HEAD@{14}: clone: from https://github.com/InfraMarine/DevOps_online_Kyiv_2020Q42021Q1.git
