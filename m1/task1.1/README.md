@@ -48,3 +48,5 @@ DevOps works close with developers and ensures that may change how product is de
   * `git reflog` 
   
   ![reflog](images/scr_reflog.png)
+  
+[reflog output file](task1.1_GIT.txt)
