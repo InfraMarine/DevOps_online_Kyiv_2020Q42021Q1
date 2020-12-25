@@ -6,9 +6,9 @@
 
   * Instance with volume attached:
 
-![disc attached](screens/t2.png)
-
-  * mountig and file creation:
+  ![disc attached](screens/t2.png)
+  
+  * mounting and file creation:
   
  ``` 
 [centos@ip-172-31-32-80 ~]$ lsblk
