@@ -141,3 +141,5 @@ PS D:\Umer\DevOps_online_Kyiv_2020Q42021Q1\m2\task2.1\taras> vagrant destroy
 Simly added apache, mysql and php. `vagrant up` output:
 
 ![custom box vagrant up](screens/vup1.png)
+
+[Vagrant file](taras/Vagrantfile)
