@@ -142,13 +142,13 @@ jita@ubuntu:~$ tree -dL 2 /
 2. What command can be used to determine the type of file (for example, text or binary)? Give an example.
 
 > `ls -l`:
-_
-- : regular file.
-d : directory.
-c : character device file.
-b : block device file.
-l : symbolic link
-_
+
+  * \- : regular file.  
+  * d : directory.  
+  * c : character device file.  
+  * b : block device file.  
+  * l : symbolic link  
+
 
 ```
 jita@ubuntu:~$ ls -l /dev/
