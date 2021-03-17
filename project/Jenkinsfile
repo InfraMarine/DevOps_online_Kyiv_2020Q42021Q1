@@ -1,0 +1,56 @@
+// Non standard plugins:
+// Amazon ECR plugin
+// Docker Pipeline
+
+pipeline {
+    agent { label 'docker' }
+    stages {
+    	stage ('Checkout') {
+    	 steps {
+     	    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, userRemoteConfigs: [[credentialsId: 'aws-inframar-rsa', url: 'https://github.com/InfraMarine/flask-app']]]) 
+    	  }
+    	 }
+    	stage ('Build') {
+            steps {
+                sh """ 
+                docker-compose build
+                """
+            }
+        }
+        stage ('Deploy local') {
+            steps {
+                sh """ 
+                # clear dangling unused images
+                docker image prune -f
+                docker-compose -p flask_app up -d
+                """	
+            }
+        }
+        stage ('Test') {
+            steps {
+                sh """ 
+        docker exec -d flask_app_web_1 python -m pytest --cov=web/ --junitxml=cov.xml tests
+        # to ensure xml report generated
+        sleep 3s
+        docker cp flask_app_web_1:/usr/src/app/cov.xml . 
+                """
+            }
+        }
+        stage('Push image') {
+            steps {
+                sh "docker tag flask_app:latest 232484871880.dkr.ecr.eu-central-1.amazonaws.com/flask_app:latest"
+                script {
+                docker.withRegistry('https://232484871880.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:ecr-admin')
+                {
+                sh "docker push 232484871880.dkr.ecr.eu-central-1.amazonaws.com/flask_app:latest"
+                }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            junit '*.xml'
+        }
+    }
+}
