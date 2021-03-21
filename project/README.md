@@ -2,13 +2,13 @@
 
 Flask app is simple web page that diplays visits cout (redis used):
 
-![app](images/app)
+![app](images/app.png)
 
 Forked repo with some minor changes:
 
-[repo](https://github.com/InfraMarine/flask-app.git)
+[app repository](https://github.com/InfraMarine/flask-app.git)
 
-Used:
+#### Used:
  * Jenkins
 
 > For this project I used only 2 instances.
@@ -20,7 +20,7 @@ Used:
    [ansible playbook](ansible/playbook_docker_git.yml)
  * _Git(Hub)_ and _AWS_
  
-Pipeline:
+#### Pipeline:
   1. Checkout git (on jenkins agent with docker)
   2. Build docker image
   3. Deploy docker image on agent
@@ -29,7 +29,7 @@ Pipeline:
 
 ![jenkins pipeline](images/proj.png)
 
-ECR:
+#### ECR:
 
 ![ecr repository](images/ecr.png)
 
