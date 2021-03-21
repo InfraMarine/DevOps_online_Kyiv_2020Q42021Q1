@@ -1,0 +1,65 @@
+---
+- name: Install git and docker
+  hosts: agents
+  become: true
+
+  tasks:
+
+      
+    - name: Install git
+      package:
+        name: git
+        state: present
+        update_cache: yes
+
+    - name: install pip3
+      package: name=python3-pip state=present 
+
+    - name: Install Docker (ubuntu 20.04)
+      block:
+
+      - name: Install required system packages
+        apt: name={{ item }} state=latest update_cache=yes
+        loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'gnupg', 'lsb-release']
+
+      - name: Add Docker GPG apt Key
+        apt_key:
+          url: https://download.docker.com/linux/ubuntu/gpg
+          state: present
+
+      - name: Add Docker Repository
+        apt_repository:
+          repo: deb https://download.docker.com/linux/ubuntu focal stable
+          state: present
+
+      - name: Update apt and install docker-ce and compose
+        apt:
+           update_cache: yes
+           name:
+             - docker-ce
+             - docker-compose
+
+           state: latest
+           autoclean: yes
+
+      - name: Instal docker python module (ansible needs it)
+        pip:
+          name: docker
+
+      - name: adding existing user '{{ user }}' to group docker
+        user:
+          name: '{{ user }}'
+          groups: docker 
+          append: yes
+        vars:
+           user: ubuntu  
+
+      - name: Start service docker, if not running
+        service:
+          name: docker
+          state: started
+          enabled: yes
+     
+      when:
+        - ansible_facts['distribution'] == "Ubuntu"
+        - ansible_facts['distribution_major_version'] == "20"
